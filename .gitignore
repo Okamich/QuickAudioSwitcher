@@ -1,0 +1,28 @@
+## Build and Release directories
+[Bb]in/
+[Oo]bj/
+Publish/
+Publish-SelfContained/
+
+## Visual Studio / VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider & JetBrains
+.idea/
+*.sln.iml
+
+## Logs and user runtime configuration
+*.log
+config.json
+
+## Unrelated temporary files
+icon_preview*.png
+download_model.py
+test_ssl.py
+.cache/
+minimax_h3_latent_upscaler_3d_conv_v1/

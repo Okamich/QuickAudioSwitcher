@@ -1,0 +1,358 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Studio Hardware Color Palette (Default: Dark) -->
+    <Color x:Key="StudioBgDarkColor">#121316</Color>
+    <Color x:Key="StudioCardBgColor">#1A1D24</Color>
+    <Color x:Key="StudioCardHoverColor">#242833</Color>
+    <Color x:Key="StudioCardActiveColor">#132738</Color>
+    <Color x:Key="StudioBorderColor">#282D39</Color>
+    <Color x:Key="StudioBorderHighlightColor">#383F50</Color>
+    <Color x:Key="StudioAccentCyanColor">#00E5FF</Color>
+    <Color x:Key="StudioAccentBlueColor">#0284C7</Color>
+    <Color x:Key="StudioAccentAmberColor">#FFB703</Color>
+    <Color x:Key="StudioTextPrimaryColor">#F8FAFC</Color>
+    <Color x:Key="StudioTextSecondaryColor">#94A3B8</Color>
+    <Color x:Key="StudioTextMutedColor">#64748B</Color>
+
+    <!-- Solid Color Brushes -->
+    <SolidColorBrush x:Key="StudioBgDarkBrush" Color="{StaticResource StudioBgDarkColor}" />
+    <SolidColorBrush x:Key="StudioCardBgBrush" Color="{StaticResource StudioCardBgColor}" />
+    <SolidColorBrush x:Key="StudioCardHoverBrush" Color="{StaticResource StudioCardHoverColor}" />
+    <SolidColorBrush x:Key="StudioCardActiveBrush" Color="{StaticResource StudioCardActiveColor}" />
+    <SolidColorBrush x:Key="StudioBorderBrush" Color="{StaticResource StudioBorderColor}" />
+    <SolidColorBrush x:Key="StudioBorderHighlightBrush" Color="{StaticResource StudioBorderHighlightColor}" />
+    <SolidColorBrush x:Key="StudioAccentCyanBrush" Color="{StaticResource StudioAccentCyanColor}" />
+    <SolidColorBrush x:Key="StudioAccentBlueBrush" Color="{StaticResource StudioAccentBlueColor}" />
+    <SolidColorBrush x:Key="StudioAccentAmberBrush" Color="{StaticResource StudioAccentAmberColor}" />
+    <SolidColorBrush x:Key="StudioTextPrimaryBrush" Color="{StaticResource StudioTextPrimaryColor}" />
+    <SolidColorBrush x:Key="StudioTextSecondaryBrush" Color="{StaticResource StudioTextSecondaryColor}" />
+    <SolidColorBrush x:Key="StudioTextMutedBrush" Color="{StaticResource StudioTextMutedColor}" />
+
+    <!-- Legacy Compatibility Brushes -->
+    <SolidColorBrush x:Key="BgDarkBrush" Color="#121316" />
+    <SolidColorBrush x:Key="BgCardBrush" Color="#1A1D24" />
+    <SolidColorBrush x:Key="BgCardHoverBrush" Color="#242833" />
+    <SolidColorBrush x:Key="BgCardSelectedBrush" Color="#132738" />
+    <SolidColorBrush x:Key="BorderDarkBrush" Color="#282D39" />
+    <SolidColorBrush x:Key="AccentBlueBrush" Color="#00E5FF" />
+    <SolidColorBrush x:Key="AccentHoverBrush" Color="#38E8FF" />
+    <SolidColorBrush x:Key="TextMainBrush" Color="#F8FAFC" />
+    <SolidColorBrush x:Key="TextMutedBrush" Color="#94A3B8" />
+
+    <!-- Modern Studio Button -->
+    <Style x:Key="ModernButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource StudioCardHoverBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource StudioTextPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource StudioBorderHighlightBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="12,7" />
+        <Setter Property="FontFamily" Value="Segoe UI, Segoe UI Variable Display" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="6"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Margin="{TemplateBinding Padding}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource StudioAccentCyanBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource StudioAccentBlueBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.45" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Accent Primary Button (Cyan / Studio Blue Glow) -->
+    <Style x:Key="AccentButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0284C7" Offset="0.0" />
+                    <GradientStop Color="#0369A1" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#38BDF8" />
+        <Setter Property="Foreground" Value="#FFFFFF" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="6"
+                            SnapsToDevicePixels="True">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="1" Opacity="0.3" Color="#0284C7" />
+                        </Border.Effect>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Margin="{TemplateBinding Padding}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#0EA5E9" Offset="0.0" />
+                                        <GradientStop Color="#0284C7" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="border" Property="BorderBrush" Value="#7DD3FC" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#0369A1" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="#0284C7" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.45" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Studio Hardware Test Button (Cyan outlined tactile button) -->
+    <Style x:Key="StudioTestButtonStyle" TargetType="Button" BasedOn="{StaticResource ModernButtonStyle}">
+        <Setter Property="Background" Value="{DynamicResource StudioCardHoverBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource StudioAccentCyanBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource StudioBorderHighlightBrush}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Padding" Value="10,6" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Margin="{TemplateBinding Padding}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource StudioAccentCyanBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Modern Dark / Light TextBox -->
+    <Style x:Key="ModernTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="{DynamicResource StudioBgDarkBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource StudioTextPrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource StudioBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="10,6" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="CaretBrush" Value="{DynamicResource StudioAccentCyanBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5"
+                            SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource StudioBorderHighlightBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource StudioAccentCyanBrush}" />
+                            <Setter TargetName="border" Property="BorderThickness" Value="1.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Modern Dark / Light CheckBox -->
+    <Style x:Key="ModernCheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource StudioTextPrimaryBrush}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="checkBorder"
+                                Grid.Column="0"
+                                Width="18" Height="18"
+                                Background="{DynamicResource StudioCardHoverBrush}"
+                                BorderBrush="{DynamicResource StudioBorderHighlightBrush}"
+                                BorderThickness="1.5"
+                                CornerRadius="4"
+                                SnapsToDevicePixels="True"
+                                VerticalAlignment="Center"
+                                Margin="0,0,8,0">
+                            <Path x:Name="checkMark"
+                                  Data="M 3,8 L 6.5,12 L 13,4"
+                                  Stroke="{DynamicResource StudioAccentCyanBrush}"
+                                  StrokeThickness="2"
+                                  StrokeStartLineCap="Round"
+                                  StrokeEndLineCap="Round"
+                                  StrokeLineJoin="Round"
+                                  Visibility="Collapsed"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center" />
+                        </Border>
+                        <ContentPresenter Grid.Column="1"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left"
+                                          RecognizesAccessKey="True" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="checkBorder" Property="Background" Value="{DynamicResource StudioCardActiveBrush}" />
+                            <Setter TargetName="checkBorder" Property="BorderBrush" Value="{DynamicResource StudioAccentCyanBrush}" />
+                            <Setter TargetName="checkMark" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="checkBorder" Property="BorderBrush" Value="{DynamicResource StudioAccentCyanBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="CheckBox" BasedOn="{StaticResource ModernCheckBoxStyle}" />
+
+    <!-- Modern Dark / Light Studio Slider -->
+    <Style x:Key="ModernSliderStyle" TargetType="Slider">
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Slider">
+                    <Grid VerticalAlignment="Center">
+                        <Track x:Name="PART_Track">
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Command="{x:Static Slider.DecreaseLarge}">
+                                    <RepeatButton.Template>
+                                        <ControlTemplate TargetType="RepeatButton">
+                                            <Border Height="6" CornerRadius="3,0,0,3">
+                                                <Border.Background>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                        <GradientStop Color="#0284C7" Offset="0.0" />
+                                                        <GradientStop Color="#00E5FF" Offset="1.0" />
+                                                    </LinearGradientBrush>
+                                                </Border.Background>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </RepeatButton.Template>
+                                </RepeatButton>
+                            </Track.DecreaseRepeatButton>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Command="{x:Static Slider.IncreaseLarge}">
+                                    <RepeatButton.Template>
+                                        <ControlTemplate TargetType="RepeatButton">
+                                            <Border Background="{DynamicResource StudioBorderHighlightBrush}" Height="6" CornerRadius="0,3,3,0" />
+                                        </ControlTemplate>
+                                    </RepeatButton.Template>
+                                </RepeatButton>
+                            </Track.IncreaseRepeatButton>
+                            <Track.Thumb>
+                                <Thumb Cursor="Hand">
+                                    <Thumb.Template>
+                                        <ControlTemplate TargetType="Thumb">
+                                            <Grid Width="20" Height="20">
+                                                <Ellipse Width="18" Height="18" Fill="#FFFFFF" Stroke="{DynamicResource StudioAccentCyanBrush}" StrokeThickness="2.5">
+                                                    <Ellipse.Effect>
+                                                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.4" Color="#000000" />
+                                                    </Ellipse.Effect>
+                                                </Ellipse>
+                                                <Ellipse Width="6" Height="6" Fill="{DynamicResource StudioAccentBlueBrush}" />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>
+                            </Track.Thumb>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Sleek Studio ScrollBar -->
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+        <Setter Property="Width" Value="6" />
+        <Setter Property="MinWidth" Value="6" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                    <Grid x:Name="Bg" SnapsToDevicePixels="true">
+                        <Track x:Name="PART_Track" IsDirectionReversed="true">
+                            <Track.Thumb>
+                                <Thumb>
+                                    <Thumb.Template>
+                                        <ControlTemplate TargetType="{x:Type Thumb}">
+                                            <Border Background="{DynamicResource StudioBorderHighlightBrush}" CornerRadius="3" SnapsToDevicePixels="True" />
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter Property="Background" Value="{DynamicResource StudioTextMutedBrush}" />
+                                                </Trigger>
+                                                <Trigger Property="IsDragging" Value="true">
+                                                    <Setter Property="Background" Value="{DynamicResource StudioAccentCyanBrush}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>
+                            </Track.Thumb>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
