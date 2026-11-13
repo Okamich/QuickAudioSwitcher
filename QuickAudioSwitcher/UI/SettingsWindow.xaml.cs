@@ -354,8 +354,8 @@ namespace QuickAudioSwitcher.UI
             bool isDark = ThemeManager.IsDark;
             foreach (var row in _rowModels)
             {
-                row.RowBorder.Background = isDark ? new SolidColorBrush(Color.FromRgb(22, 25, 32)) : new SolidColorBrush(Color.FromRgb(255, 255, 255));
-                row.RowBorder.BorderBrush = isDark ? new SolidColorBrush(Color.FromRgb(36, 41, 52)) : new SolidColorBrush(Color.FromRgb(226, 232, 240));
+                row.RowBorder.Background = isDark ? new SolidColorBrush(Color.FromRgb(26, 29, 36)) : new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                row.RowBorder.BorderBrush = isDark ? new SolidColorBrush(Color.FromRgb(40, 45, 57)) : new SolidColorBrush(Color.FromRgb(215, 222, 232));
                 row.TxtSysName.Foreground = isDark ? new SolidColorBrush(Color.FromRgb(248, 250, 252)) : new SolidColorBrush(Color.FromRgb(15, 23, 42));
                 row.TxtAdapter.Foreground = isDark ? new SolidColorBrush(Color.FromRgb(148, 163, 184)) : new SolidColorBrush(Color.FromRgb(71, 85, 105));
             }
@@ -367,8 +367,8 @@ namespace QuickAudioSwitcher.UI
 
             var border = new Border
             {
-                Background = isDark ? new SolidColorBrush(Color.FromRgb(22, 25, 32)) : new SolidColorBrush(Color.FromRgb(255, 255, 255)),
-                BorderBrush = isDark ? new SolidColorBrush(Color.FromRgb(36, 41, 52)) : new SolidColorBrush(Color.FromRgb(226, 232, 240)),
+                Background = isDark ? new SolidColorBrush(Color.FromRgb(26, 29, 36)) : new SolidColorBrush(Color.FromRgb(255, 255, 255)),
+                BorderBrush = isDark ? new SolidColorBrush(Color.FromRgb(40, 45, 57)) : new SolidColorBrush(Color.FromRgb(215, 222, 232)),
                 BorderThickness = new Thickness(1),
                 CornerRadius = new CornerRadius(6),
                 Margin = new Thickness(0, 0, 0, 8),
@@ -378,13 +378,13 @@ namespace QuickAudioSwitcher.UI
 
             border.MouseEnter += (s, e) =>
             {
-                border.Background = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(28, 32, 42)) : new SolidColorBrush(Color.FromRgb(241, 245, 249));
-                border.BorderBrush = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(48, 55, 70)) : new SolidColorBrush(Color.FromRgb(203, 213, 225));
+                border.Background = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(36, 40, 51)) : new SolidColorBrush(Color.FromRgb(243, 245, 249));
+                border.BorderBrush = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(56, 63, 80)) : new SolidColorBrush(Color.FromRgb(186, 197, 212));
             };
             border.MouseLeave += (s, e) =>
             {
-                border.Background = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(22, 25, 32)) : new SolidColorBrush(Color.FromRgb(255, 255, 255));
-                border.BorderBrush = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(36, 41, 52)) : new SolidColorBrush(Color.FromRgb(226, 232, 240));
+                border.Background = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(26, 29, 36)) : new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                border.BorderBrush = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(40, 45, 57)) : new SolidColorBrush(Color.FromRgb(215, 222, 232));
             };
 
             var grid = new Grid();
