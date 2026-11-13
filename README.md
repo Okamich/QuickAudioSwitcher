@@ -49,7 +49,7 @@ You can download the latest precompiled single-file release:
 ### Build Commands
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/QuickAudioSwitcher.git
+git clone https://github.com/Okamich/QuickAudioSwitcher.git
 cd QuickAudioSwitcher
 
 # Build solution
