@@ -12,14 +12,6 @@
         SizeToContent="Height"
         WindowStartupLocation="Manual">
 
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
-
     <Border Background="{DynamicResource StudioBgDarkBrush}"
             BorderBrush="{DynamicResource StudioBorderBrush}"
             BorderThickness="1"
@@ -27,7 +19,7 @@
             Padding="0"
             Margin="10">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="22" ShadowDepth="4" Opacity="0.5" Color="#000000" />
+            <DropShadowEffect BlurRadius="20" ShadowDepth="4" Opacity="0.3" Color="#000000" />
         </Border.Effect>
 
         <StackPanel>

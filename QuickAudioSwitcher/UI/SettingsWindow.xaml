@@ -10,14 +10,6 @@
         Foreground="{DynamicResource StudioTextPrimaryBrush}"
         FontFamily="Segoe UI, Segoe UI Variable Text">
 
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
-
     <Grid Margin="22">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -52,7 +44,7 @@
         </Border>
 
         <!-- Devices List Container -->
-        <Border Grid.Row="1" Background="{DynamicResource StudioCardBgBrush}"
+        <Border Grid.Row="1" Background="{DynamicResource StudioContainerBgBrush}"
                 BorderBrush="{DynamicResource StudioBorderBrush}"
                 BorderThickness="1" CornerRadius="8" Padding="10">
             <DockPanel>
@@ -78,7 +70,7 @@
         </Border>
 
         <!-- Settings 3-Column Panel (Hotkey | System | Appearance) -->
-        <Border Grid.Row="2" Background="{DynamicResource StudioCardBgBrush}"
+        <Border Grid.Row="2" Background="{DynamicResource StudioContainerBgBrush}"
                 BorderBrush="{DynamicResource StudioBorderBrush}"
                 BorderThickness="1" CornerRadius="8" Margin="0,14,0,14" Padding="16,14">
             <Grid>

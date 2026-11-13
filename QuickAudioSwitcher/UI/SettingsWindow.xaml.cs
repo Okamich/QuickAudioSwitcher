@@ -135,9 +135,9 @@ namespace QuickAudioSwitcher.UI
             }
             else
             {
-                btn.Background = isDark ? new SolidColorBrush(Color.FromRgb(26, 30, 39)) : new SolidColorBrush(Color.FromRgb(248, 250, 252));
+                btn.Background = isDark ? new SolidColorBrush(Color.FromRgb(26, 30, 39)) : new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 btn.BorderBrush = isDark ? new SolidColorBrush(Color.FromRgb(47, 54, 70)) : new SolidColorBrush(Color.FromRgb(203, 213, 225));
-                btn.Foreground = isDark ? new SolidColorBrush(Color.FromRgb(148, 163, 184)) : new SolidColorBrush(Color.FromRgb(71, 85, 105));
+                btn.Foreground = isDark ? new SolidColorBrush(Color.FromRgb(148, 163, 184)) : new SolidColorBrush(Color.FromRgb(51, 65, 85));
                 btn.FontWeight = FontWeights.Normal;
             }
         }
@@ -163,6 +163,7 @@ namespace QuickAudioSwitcher.UI
             _curTheme = "Dark";
             ThemeManager.ApplyTheme(_curTheme);
             UpdatePreferencesButtonsUi();
+            UpdateHotkeyButtonUi();
             RefreshDeviceRowBrushes();
         }
 
@@ -171,6 +172,7 @@ namespace QuickAudioSwitcher.UI
             _curTheme = "Light";
             ThemeManager.ApplyTheme(_curTheme);
             UpdatePreferencesButtonsUi();
+            UpdateHotkeyButtonUi();
             RefreshDeviceRowBrushes();
         }
 
@@ -180,15 +182,15 @@ namespace QuickAudioSwitcher.UI
             if (_isRecordingHotkey)
             {
                 BtnRecordHotkey.Content = Loc.T("ListeningHotkey");
-                BtnRecordHotkey.Background = new SolidColorBrush(Color.FromRgb(40, 18, 24));
-                BtnRecordHotkey.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 77, 77));
-                BtnRecordHotkey.Foreground = new SolidColorBrush(Color.FromRgb(255, 110, 110));
+                BtnRecordHotkey.Background = isDark ? new SolidColorBrush(Color.FromRgb(40, 18, 24)) : new SolidColorBrush(Color.FromRgb(254, 242, 242));
+                BtnRecordHotkey.BorderBrush = isDark ? new SolidColorBrush(Color.FromRgb(255, 77, 77)) : new SolidColorBrush(Color.FromRgb(239, 68, 68));
+                BtnRecordHotkey.Foreground = isDark ? new SolidColorBrush(Color.FromRgb(255, 110, 110)) : new SolidColorBrush(Color.FromRgb(185, 28, 28));
             }
             else
             {
                 BtnRecordHotkey.Content = $"⌨ {_curDisplayText}";
-                BtnRecordHotkey.Background = isDark ? new SolidColorBrush(Color.FromRgb(26, 30, 39)) : new SolidColorBrush(Color.FromRgb(240, 243, 246));
-                BtnRecordHotkey.BorderBrush = isDark ? new SolidColorBrush(Color.FromRgb(2, 132, 199)) : new SolidColorBrush(Color.FromRgb(2, 132, 199));
+                BtnRecordHotkey.Background = isDark ? new SolidColorBrush(Color.FromRgb(26, 30, 39)) : new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                BtnRecordHotkey.BorderBrush = isDark ? new SolidColorBrush(Color.FromRgb(0, 229, 255)) : new SolidColorBrush(Color.FromRgb(2, 132, 199));
                 BtnRecordHotkey.Foreground = isDark ? new SolidColorBrush(Color.FromRgb(0, 229, 255)) : new SolidColorBrush(Color.FromRgb(2, 132, 199));
             }
         }
@@ -351,40 +353,38 @@ namespace QuickAudioSwitcher.UI
 
         private void RefreshDeviceRowBrushes()
         {
-            bool isDark = ThemeManager.IsDark;
             foreach (var row in _rowModels)
             {
-                row.RowBorder.Background = isDark ? new SolidColorBrush(Color.FromRgb(26, 29, 36)) : new SolidColorBrush(Color.FromRgb(255, 255, 255));
-                row.RowBorder.BorderBrush = isDark ? new SolidColorBrush(Color.FromRgb(40, 45, 57)) : new SolidColorBrush(Color.FromRgb(215, 222, 232));
-                row.TxtSysName.Foreground = isDark ? new SolidColorBrush(Color.FromRgb(248, 250, 252)) : new SolidColorBrush(Color.FromRgb(15, 23, 42));
-                row.TxtAdapter.Foreground = isDark ? new SolidColorBrush(Color.FromRgb(148, 163, 184)) : new SolidColorBrush(Color.FromRgb(71, 85, 105));
+                row.RowBorder.SetResourceReference(Border.BackgroundProperty, "StudioCardBgBrush");
+                row.RowBorder.SetResourceReference(Border.BorderBrushProperty, "StudioBorderBrush");
+                row.ChkFavorite.SetResourceReference(Control.ForegroundProperty, "StudioTextPrimaryBrush");
+                row.TxtSysName.SetResourceReference(TextBlock.ForegroundProperty, "StudioTextPrimaryBrush");
+                row.TxtAdapter.SetResourceReference(TextBlock.ForegroundProperty, "StudioTextSecondaryBrush");
             }
         }
 
         private DeviceRowModel CreateDeviceRow(AudioDevice dev)
         {
-            bool isDark = ThemeManager.IsDark;
-
             var border = new Border
             {
-                Background = isDark ? new SolidColorBrush(Color.FromRgb(26, 29, 36)) : new SolidColorBrush(Color.FromRgb(255, 255, 255)),
-                BorderBrush = isDark ? new SolidColorBrush(Color.FromRgb(40, 45, 57)) : new SolidColorBrush(Color.FromRgb(215, 222, 232)),
                 BorderThickness = new Thickness(1),
                 CornerRadius = new CornerRadius(6),
                 Margin = new Thickness(0, 0, 0, 8),
                 Padding = new Thickness(12, 10, 12, 10),
                 SnapsToDevicePixels = true
             };
+            border.SetResourceReference(Border.BackgroundProperty, "StudioCardBgBrush");
+            border.SetResourceReference(Border.BorderBrushProperty, "StudioBorderBrush");
 
             border.MouseEnter += (s, e) =>
             {
-                border.Background = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(36, 40, 51)) : new SolidColorBrush(Color.FromRgb(243, 245, 249));
-                border.BorderBrush = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(56, 63, 80)) : new SolidColorBrush(Color.FromRgb(186, 197, 212));
+                border.SetResourceReference(Border.BackgroundProperty, "StudioCardHoverBrush");
+                border.SetResourceReference(Border.BorderBrushProperty, "StudioBorderHighlightBrush");
             };
             border.MouseLeave += (s, e) =>
             {
-                border.Background = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(26, 29, 36)) : new SolidColorBrush(Color.FromRgb(255, 255, 255));
-                border.BorderBrush = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(40, 45, 57)) : new SolidColorBrush(Color.FromRgb(215, 222, 232));
+                border.SetResourceReference(Border.BackgroundProperty, "StudioCardBgBrush");
+                border.SetResourceReference(Border.BorderBrushProperty, "StudioBorderBrush");
             };
 
             var grid = new Grid();
@@ -398,11 +398,11 @@ namespace QuickAudioSwitcher.UI
             {
                 Content = Loc.T("FavCheckbox"),
                 IsChecked = dev.IsFavorite,
-                Foreground = (Brush)FindResource("StudioTextPrimaryBrush"),
                 FontWeight = FontWeights.Medium,
                 VerticalAlignment = VerticalAlignment.Center,
                 Cursor = Cursors.Hand
             };
+            chkFav.SetResourceReference(Control.ForegroundProperty, "StudioTextPrimaryBrush");
             Grid.SetColumn(chkFav, 0);
             grid.Children.Add(chkFav);
 
@@ -413,17 +413,19 @@ namespace QuickAudioSwitcher.UI
                 Text = dev.SystemName,
                 FontSize = 13,
                 FontWeight = FontWeights.SemiBold,
-                Foreground = isDark ? new SolidColorBrush(Color.FromRgb(248, 250, 252)) : new SolidColorBrush(Color.FromRgb(15, 23, 42)),
                 TextTrimming = TextTrimming.CharacterEllipsis
             };
+            txtSysName.SetResourceReference(TextBlock.ForegroundProperty, "StudioTextPrimaryBrush");
+
             var txtAdapter = new TextBlock
             {
                 Text = dev.AdapterName,
                 FontSize = 11,
-                Foreground = isDark ? new SolidColorBrush(Color.FromRgb(148, 163, 184)) : new SolidColorBrush(Color.FromRgb(71, 85, 105)),
                 TextTrimming = TextTrimming.CharacterEllipsis,
                 Margin = new Thickness(0, 2, 0, 0)
             };
+            txtAdapter.SetResourceReference(TextBlock.ForegroundProperty, "StudioTextSecondaryBrush");
+
             infoStack.Children.Add(txtSysName);
             infoStack.Children.Add(txtAdapter);
             Grid.SetColumn(infoStack, 1);

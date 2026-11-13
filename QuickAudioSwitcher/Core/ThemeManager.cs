@@ -27,59 +27,80 @@ namespace QuickAudioSwitcher.Core
                 // Dark: Dark Studio Obsidian & Electric Cyan
                 // Light: Precision Studio Silver/Chalk & Vibrant Marine Blue
                 Color bgDark = isDark
-                    ? Color.FromRgb(18, 19, 22)      // Deep obsidian
-                    : Color.FromRgb(235, 238, 242);   // Precision chalk/silver enclosure
+                    ? Color.FromRgb(16, 18, 22)       // Deep obsidian canvas
+                    : Color.FromRgb(237, 240, 244);   // Precision cool chalk/silver canvas
+
+                Color containerBg = isDark
+                    ? Color.FromRgb(22, 25, 34)       // Dark rack enclosure
+                    : Color.FromRgb(248, 250, 252);   // Clean light rack enclosure
 
                 Color cardBg = isDark
-                    ? Color.FromRgb(26, 29, 36)      // Dark slate card
-                    : Color.FromRgb(255, 255, 255);  // Pure crisp white card
+                    ? Color.FromRgb(28, 32, 44)       // Brushed dark tile
+                    : Color.FromRgb(255, 255, 255);   // Pure crisp white tile
 
                 Color cardHover = isDark
-                    ? Color.FromRgb(36, 40, 51)      // Slate card hover
-                    : Color.FromRgb(243, 245, 249);  // Subtle soft hover
+                    ? Color.FromRgb(36, 42, 58)       // Dark hover tile
+                    : Color.FromRgb(241, 245, 249);   // Light hover tile
 
                 Color cardActive = isDark
-                    ? Color.FromRgb(19, 39, 56)      // Deep cyan-navy active
-                    : Color.FromRgb(224, 242, 254);  // Sky-cyan active channel
+                    ? Color.FromRgb(19, 43, 64)       // Deep cyan-navy active
+                    : Color.FromRgb(224, 242, 254);   // Vibrant sky-cyan active
 
                 Color border = isDark
-                    ? Color.FromRgb(40, 45, 57)      // Hairline dark border
-                    : Color.FromRgb(215, 222, 232);  // Hairline crisp light border
+                    ? Color.FromRgb(40, 47, 62)       // Hairline dark border
+                    : Color.FromRgb(203, 213, 225);   // Hairline light border (Slate-300)
 
                 Color borderHighlight = isDark
-                    ? Color.FromRgb(56, 63, 80)      // Highlight border
-                    : Color.FromRgb(186, 197, 212);  // Light highlight border
+                    ? Color.FromRgb(58, 68, 90)       // Highlight border
+                    : Color.FromRgb(148, 163, 184);   // Highlight border (Slate-400)
+
+                Color inputBg = isDark
+                    ? Color.FromRgb(18, 20, 26)       // Dark input field
+                    : Color.FromRgb(255, 255, 255);   // Light input field
+
+                Color inputBorder = isDark
+                    ? Color.FromRgb(46, 53, 68)       // Dark input border
+                    : Color.FromRgb(203, 213, 225);   // Light input border
+
+                Color buttonBg = isDark
+                    ? Color.FromRgb(28, 33, 44)       // Dark button background
+                    : Color.FromRgb(255, 255, 255);   // Light button background
+
+                Color buttonBorder = isDark
+                    ? Color.FromRgb(51, 60, 78)       // Dark button border
+                    : Color.FromRgb(203, 213, 225);   // Light button border
+
+                Color buttonHoverBg = isDark
+                    ? Color.FromRgb(38, 45, 60)       // Dark button hover
+                    : Color.FromRgb(241, 245, 249);   // Light button hover
 
                 Color accentCyan = isDark
-                    ? Color.FromRgb(0, 229, 255)     // Electric cyan
-                    : Color.FromRgb(2, 132, 199);    // Vibrant marine blue (high contrast on white)
+                    ? Color.FromRgb(0, 229, 255)      // Electric cyan
+                    : Color.FromRgb(2, 132, 199);     // Vibrant marine blue (AAA contrast on white)
 
                 Color accentBlue = isDark
-                    ? Color.FromRgb(2, 132, 199)     // Studio blue
-                    : Color.FromRgb(3, 105, 161);    // Deep studio navy
+                    ? Color.FromRgb(2, 132, 199)      // Studio blue
+                    : Color.FromRgb(3, 105, 161);     // Deep studio navy
 
                 Color accentAmber = isDark
-                    ? Color.FromRgb(255, 183, 3)     // Neon amber
-                    : Color.FromRgb(217, 119, 6);     // Dark amber
+                    ? Color.FromRgb(255, 183, 3)      // Neon amber
+                    : Color.FromRgb(217, 119, 6);      // Dark readable amber
 
                 Color textPrimary = isDark
-                    ? Color.FromRgb(248, 250, 252)   // Crisp pure white
-                    : Color.FromRgb(15, 23, 42);      // Deep ink slate (AAA contrast)
+                    ? Color.FromRgb(248, 250, 252)    // Crisp pure white (AAA)
+                    : Color.FromRgb(15, 23, 42);       // Deepest slate ink (AAA 15:1 contrast)
 
                 Color textSecondary = isDark
-                    ? Color.FromRgb(148, 163, 184)   // Cool muted gray
-                    : Color.FromRgb(71, 85, 105);     // Dark slate gray (AA contrast 7.5:1)
+                    ? Color.FromRgb(148, 163, 184)    // Cool slate gray
+                    : Color.FromRgb(51, 65, 85);       // Deep slate gray (AA 8:1 contrast)
 
                 Color textMuted = isDark
-                    ? Color.FromRgb(100, 116, 139)   // Subdued label
-                    : Color.FromRgb(100, 116, 139);   // Subdued label (clear on light)
-
-                Color shadowColor = isDark
-                    ? Color.FromArgb(160, 0, 0, 0)
-                    : Color.FromArgb(45, 71, 85, 105);
+                    ? Color.FromRgb(100, 116, 139)    // Slate-500
+                    : Color.FromRgb(100, 116, 139);    // Slate-500
 
                 // Update Application Resources
                 app.Resources["StudioBgDarkColor"] = bgDark;
+                app.Resources["StudioContainerBgColor"] = containerBg;
                 app.Resources["StudioCardBgColor"] = cardBg;
                 app.Resources["StudioCardHoverColor"] = cardHover;
                 app.Resources["StudioCardActiveColor"] = cardActive;
@@ -93,18 +114,23 @@ namespace QuickAudioSwitcher.Core
                 app.Resources["StudioTextMutedColor"] = textMuted;
 
                 app.Resources["StudioBgDarkBrush"] = new SolidColorBrush(bgDark);
+                app.Resources["StudioContainerBgBrush"] = new SolidColorBrush(containerBg);
                 app.Resources["StudioCardBgBrush"] = new SolidColorBrush(cardBg);
                 app.Resources["StudioCardHoverBrush"] = new SolidColorBrush(cardHover);
                 app.Resources["StudioCardActiveBrush"] = new SolidColorBrush(cardActive);
                 app.Resources["StudioBorderBrush"] = new SolidColorBrush(border);
                 app.Resources["StudioBorderHighlightBrush"] = new SolidColorBrush(borderHighlight);
+                app.Resources["StudioInputBgBrush"] = new SolidColorBrush(inputBg);
+                app.Resources["StudioInputBorderBrush"] = new SolidColorBrush(inputBorder);
+                app.Resources["StudioButtonBgBrush"] = new SolidColorBrush(buttonBg);
+                app.Resources["StudioButtonBorderBrush"] = new SolidColorBrush(buttonBorder);
+                app.Resources["StudioButtonHoverBgBrush"] = new SolidColorBrush(buttonHoverBg);
                 app.Resources["StudioAccentCyanBrush"] = new SolidColorBrush(accentCyan);
                 app.Resources["StudioAccentBlueBrush"] = new SolidColorBrush(accentBlue);
                 app.Resources["StudioAccentAmberBrush"] = new SolidColorBrush(accentAmber);
                 app.Resources["StudioTextPrimaryBrush"] = new SolidColorBrush(textPrimary);
                 app.Resources["StudioTextSecondaryBrush"] = new SolidColorBrush(textSecondary);
                 app.Resources["StudioTextMutedBrush"] = new SolidColorBrush(textMuted);
-                app.Resources["StudioShadowColor"] = shadowColor;
 
                 // Legacy compatibility
                 app.Resources["BgDarkBrush"] = new SolidColorBrush(bgDark);
@@ -127,7 +153,7 @@ namespace QuickAudioSwitcher.Core
 
         public static System.Drawing.Color TrayMenuBorder => IsDark
             ? System.Drawing.Color.FromArgb(40, 46, 58)
-            : System.Drawing.Color.FromArgb(215, 222, 232);
+            : System.Drawing.Color.FromArgb(203, 213, 225);
 
         public static System.Drawing.Color TrayMenuHover => IsDark
             ? System.Drawing.Color.FromArgb(20, 40, 58)

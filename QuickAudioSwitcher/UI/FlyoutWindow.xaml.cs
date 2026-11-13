@@ -166,12 +166,12 @@ namespace QuickAudioSwitcher.UI
             {
                 return (
                     bg: isSelected ? new SolidColorBrush(Color.FromRgb(224, 242, 254)) : new SolidColorBrush(Color.FromRgb(255, 255, 255)),
-                    border: isSelected ? new SolidColorBrush(Color.FromRgb(2, 132, 199)) : new SolidColorBrush(Color.FromRgb(226, 232, 240)),
+                    border: isSelected ? new SolidColorBrush(Color.FromRgb(2, 132, 199)) : new SolidColorBrush(Color.FromRgb(203, 213, 225)),
                     title: isSelected ? new SolidColorBrush(Color.FromRgb(2, 132, 199)) : new SolidColorBrush(Color.FromRgb(15, 23, 42)),
-                    subtitle: new SolidColorBrush(Color.FromRgb(71, 85, 105)),
+                    subtitle: new SolidColorBrush(Color.FromRgb(51, 65, 85)),
                     accent: new SolidColorBrush(Color.FromRgb(2, 132, 199)),
                     ledInactive: new SolidColorBrush(Color.FromRgb(203, 213, 225)),
-                    iconInactive: new SolidColorBrush(Color.FromRgb(148, 163, 184))
+                    iconInactive: new SolidColorBrush(Color.FromRgb(100, 116, 139))
                 );
             }
         }
@@ -198,8 +198,8 @@ namespace QuickAudioSwitcher.UI
                 bool isSelected = string.Equals(border.Tag as string, _selectedDeviceId, StringComparison.OrdinalIgnoreCase);
                 if (!isSelected)
                 {
-                    border.Background = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(36, 40, 51)) : new SolidColorBrush(Color.FromRgb(240, 243, 246));
-                    border.BorderBrush = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(59, 67, 86)) : new SolidColorBrush(Color.FromRgb(203, 213, 225));
+                    border.Background = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(36, 40, 51)) : new SolidColorBrush(Color.FromRgb(241, 245, 249));
+                    border.BorderBrush = ThemeManager.IsDark ? new SolidColorBrush(Color.FromRgb(59, 67, 86)) : new SolidColorBrush(Color.FromRgb(148, 163, 184));
                 }
             };
             border.MouseLeave += (s, e) =>
