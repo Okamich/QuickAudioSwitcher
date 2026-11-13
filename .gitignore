@@ -3,6 +3,7 @@
 [Oo]bj/
 Publish/
 Publish-SelfContained/
+Release-SingleFile/
 
 ## Visual Studio / VS Code
 .vs/
